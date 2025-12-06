@@ -1,0 +1,70 @@
+swagger: "2.0"
+info:
+  title: "Quiz Master API"
+  description: "API endpoints for Quiz Master application"
+  version: "1.0.0"
+
+paths:
+  /api/subjects:
+    get:
+      summary: "List all subjects"
+      responses:
+        200:
+          description: "JSON array of subjects"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+
+  /api/subjects/{subject_id}/chapters:
+    get:
+      summary: "Get chapters by subject ID"
+      parameters:
+        - name: "subject_id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "JSON array of chapters"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                subject_id:
+                  type: integer
+
+  /api/chapters/{chapter_id}/quizzes:
+    get:
+      summary: "Get quizzes by chapter ID"
+      parameters:
+        - name: "chapter_id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "JSON array of quizzes"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                time_duration:
+                  type: string
+                chapter_id:
+                  type: integer
